@@ -228,6 +228,10 @@
 
   new IntersectionObserver(([en]) => { phoneVisible = en.isIntersecting; playActive(); if (phoneVisible) startedAt = performance.now() - (parseFloat(barEls[idx].firstChild.style.width) || 0) / 100 * HOLD; }, { threshold: 0.25 }).observe(phone);
   go(0);
+  // If the browser blocked autoplay (e.g. iPhone Low Power Mode), start on the first touch, scroll or tab return
+  const resumeReels = () => { if (!document.hidden) playActive(); };
+  document.addEventListener("visibilitychange", resumeReels);
+  ["pointerdown", "touchstart", "scroll", "keydown"].forEach((ev) => window.addEventListener(ev, resumeReels, { once: true, passive: true }));
   }
 
   /* ---------- Video wall ---------- */
