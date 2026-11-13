@@ -215,7 +215,7 @@ h2 em { color: var(--rosa); }
 .reel__rail .ico { width: 26px; height: 26px; filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .5)); }
 .reel__rail .heart.is-on { color: var(--rosa); animation: pop .4s var(--ease); }
 @keyframes pop { 50% { transform: scale(1.35); } }
-.reel__avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--rosa) url("../favicon.svg") center / 70% no-repeat; border: 2px solid #fff; }
+.reel__avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--rosa) url("../assets/brand/favicon.svg") center / 70% no-repeat; border: 2px solid #fff; }
 .reel__burst { position: absolute; z-index: 3; left: 50%; top: 45%; width: 90px; height: 90px; margin: -45px 0 0 -45px; color: var(--rosa); pointer-events: none; opacity: 0; }
 .reel__burst.go { animation: burst .8s var(--ease) forwards; }
 @keyframes burst { 0% { opacity: 0; transform: scale(.3) rotate(-12deg); } 25% { opacity: 1; transform: scale(1.1) rotate(4deg); } 100% { opacity: 0; transform: scale(1.4) translateY(-30px); } }

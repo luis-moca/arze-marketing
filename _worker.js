@@ -6,6 +6,7 @@
 
 const VIDEO = /\.(mp4|webm|mov)$/i;
 const TYPES = { mp4: "video/mp4", webm: "video/webm", mov: "video/quicktime" };
+const CACHE = /^\/(assets|css|js)\//;
 
 export default {
   async fetch(request, env) {
@@ -15,9 +16,16 @@ export default {
 
     if (!isVideo || !range || (request.method !== "GET" && request.method !== "HEAD")) {
       const res = await env.ASSETS.fetch(request);
-      if (!isVideo) return res;
+      if (!isVideo) {
+        // Let browsers keep images, styles and scripts for a week (files are versioned with ?v=)
+        if (!CACHE.test(url.pathname) || !res.ok) return res;
+        const out = new Response(res.body, res);
+        out.headers.set("Cache-Control", "public, max-age=604800");
+        return out;
+      }
       const out = new Response(res.body, res);
       out.headers.set("Accept-Ranges", "bytes");
+      out.headers.set("Cache-Control", "public, max-age=604800");
       return out;
     }
 

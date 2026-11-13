@@ -8,8 +8,9 @@
   const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
   const money = (n) => "$" + Math.round(n).toLocaleString("en-CA");
   const get = (path) => path.split(".").reduce((o, k) => (o == null ? o : o[k]), C);
-  const vid = (name) => `assets/video/${name}.mp4`;
-  const poster = (name) => `assets/video/${name}.webp`;
+  const ROOT = document.body.dataset.root || ""; // "../" on pages inside /pages
+  const vid = (name) => `${ROOT}assets/video/${name}.mp4`;
+  const poster = (name) => `${ROOT}assets/video/${name}.webp`;
   const waLink = (msg) => `https://wa.me/${C.contact.whatsapp}?text=${encodeURIComponent(msg || C.whatsappMessage)}`;
   let setBa = () => {};
   const pkgById = (id) => C.packages.find((p) => p.id === id) || C.packages[0];
@@ -298,7 +299,7 @@
   const howTrack = $("#howTrack");
   howTrack.innerHTML = C.steps.map((s, i) => `
     <article class="step">
-      <img src="assets/img/${s.img}-sm.webp" alt="" loading="lazy">
+      <img src="${ROOT}assets/img/${s.img}-sm.webp" alt="" loading="lazy">
       <div class="step__body">
         <div class="step__n" aria-hidden="true">0${i + 1}</div>
         <h3 class="step__t">${s.title}</h3>
@@ -448,7 +449,7 @@
     const logo = (n, i) => `<li class="lg lg--${i % 3}"><span class="lg__mark">${initials(n)}</span><span class="lg__name">${n}</span></li>`;
     const set = [...C.clients, ...C.clients, ...C.clients].map(logo).join("");
     $("#logosTrack").innerHTML = set + set.replace(/<li /g, '<li aria-hidden="true" ');
-    const card = (t) => `<figure class="tq"><img src="assets/img/${t.img}.webp" alt="" width="56" height="56" loading="lazy"><blockquote>${t.quote}</blockquote><figcaption><b>${t.name}</b> · ${t.role}${t.sample ? ' <i class="tq__sample">Sample</i>' : ""}</figcaption></figure>`;
+    const card = (t) => `<figure class="tq"><img src="${ROOT}assets/img/${t.img}.webp" alt="" width="56" height="56" loading="lazy"><blockquote>${t.quote}</blockquote><figcaption><b>${t.name}</b> · ${t.role}${t.sample ? ' <i class="tq__sample">Sample</i>' : ""}</figcaption></figure>`;
     const qs = [...C.testimonials, ...C.testimonials].map(card).join("");
     $("#quotesTrack").innerHTML = qs + qs.replace(/<figure /g, '<figure aria-hidden="true" ');
   }
