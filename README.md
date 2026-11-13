@@ -1,8 +1,9 @@
 # Arze Media
 
-Website for a Toronto studio that turns one shoot day into a month of Reels and TikToks for restaurants.
+Website for Arze Media, a Toronto video studio for restaurants that runs on an AI-assisted pipeline: one shoot becomes a month of Reels and TikToks, built to deliver in days, not weeks.
+Owners see the work, pick a package, check if it pays off and book on WhatsApp, no calls needed.
 
-![Arze Media](og-image.jpg)
+![Arze Media](cover.jpg)
 
 Live: https://arze-media.pages.dev
 
